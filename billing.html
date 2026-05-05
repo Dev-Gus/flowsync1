@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowSync — Billing</title>
+  <link rel="stylesheet" href="output.css" />
+</head>
+<body class="min-h-screen bg-background text-foreground">
+  <div class="md:grid md:grid-cols-[240px_1fr] min-h-screen">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-20 w-60 -translate-x-full bg-surface border-r border-border flex flex-col transition-transform duration-200 md:translate-x-0 md:sticky md:top-0 md:h-screen">
+      <div class="p-6 border-b border-border flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">F</span>
+          </div>
+          <span class="text-lg font-semibold text-foreground">FlowSync</span>
+        </a>
+        <button id="sidebar-close" class="md:hidden w-8 h-8 flex items-center justify-center rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors" aria-label="Close sidebar">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="flex-1 p-4 overflow-y-auto">
+        <ul class="space-y-1">
+          <li>
+            <a href="index.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="users.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+              <span>Users</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span>Settings</span>
+            </a>
+          </li>
+          <li>
+            <a href="billing.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-primary bg-primary/10 font-medium">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+              </svg>
+              <span>Billing</span>
+            </a>
+          </li>
+          <li>
+            <a href="integrations.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+              </svg>
+              <span>Integrations</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="p-4 border-t border-border">
+        <a href="settings.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+          <div class="w-8 h-8 bg-muted rounded-full flex items-center justify-center">
+            <span class="text-xs font-medium text-foreground">JD</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-foreground truncate">John Doe</p>
+            <p class="text-xs text-muted truncate">john@example.com</p>
+          </div>
+        </a>
+      </div>
+    </aside>
+
+    <div id="sidebar-backdrop" class="fixed inset-0 z-10 bg-black/50 hidden md:hidden" aria-hidden="true"></div>
+
+    <div class="flex flex-col min-h-screen overflow-x-hidden">
+      <header class="sticky top-0 z-10 h-16 bg-background border-b border-border flex items-center justify-between px-4 md:px-6">
+        <div class="flex items-center gap-3">
+          <button id="sidebar-toggle" class="md:hidden w-10 h-10 -ml-2 flex items-center justify-center rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors" aria-label="Open menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+          <h1 class="text-xl font-semibold text-foreground">Billing</h1>
+        </div>
+
+        <div class="relative">
+          <div class="flex items-center gap-2 md:gap-4">
+            <button class="w-10 h-10 md:w-8 md:h-8 rounded-full bg-muted flex items-center justify-center hover:bg-primary/20 transition-colors" aria-label="Notifications" id="notification-btn">
+              <svg class="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+              </svg>
+            </button>
+            <button class="w-9 h-9 rounded-full bg-primary flex items-center justify-center" aria-label="Profile menu" id="profile-btn">
+              <span class="text-sm font-medium text-white">JD</span>
+            </button>
+          </div>
+          <!-- Notification dropdown -->
+          <div id="notification-dropdown" class="absolute right-0 mt-2 w-80 bg-surface border border-border rounded-lg shadow-lg hidden z-50">
+            <div class="p-4 border-b border-border">
+              <h3 class="text-sm font-semibold text-foreground">Notifications</h3>
+            </div>
+            <div class="max-h-64 overflow-y-auto">
+              <div class="p-4 border-b border-border hover:bg-muted/50 cursor-pointer">
+                <p class="text-sm text-foreground">New user registered</p>
+                <p class="text-xs text-muted">2 minutes ago</p>
+              </div>
+              <div class="p-4 border-b border-border hover:bg-muted/50 cursor-pointer">
+                <p class="text-sm text-foreground">Project completed</p>
+                <p class="text-xs text-muted">15 minutes ago</p>
+              </div>
+              <div class="p-4 hover:bg-muted/50 cursor-pointer">
+                <p class="text-sm text-foreground">Integration added</p>
+                <p class="text-xs text-muted">1 hour ago</p>
+              </div>
+            </div>
+          </div>
+          <!-- Profile dropdown -->
+          <div id="profile-dropdown" class="absolute right-0 mt-2 w-48 bg-surface border border-border rounded-lg shadow-lg hidden z-50">
+            <div class="p-3 border-b border-border">
+              <p class="text-sm font-medium text-foreground">John Doe</p>
+              <p class="text-xs text-muted">john@example.com</p>
+            </div>
+            <div class="p-2">
+              <a href="settings.html" class="block px-3 py-2 text-sm text-muted hover:text-foreground hover:bg-muted/50 rounded">Settings</a>
+              <a href="#" class="block px-3 py-2 text-sm text-muted hover:text-foreground hover:bg-muted/50 rounded">Sign out</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1 p-4 md:p-6 space-y-6">
+        <!-- Current Plan -->
+        <section class="card">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-semibold text-foreground">Current Plan</h2>
+              <p class="text-muted mt-1">You're on the <span class="text-primary font-medium">Professional</span> plan</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="badge-active">Active</span>
+              <span class="text-2xl font-bold text-foreground">$49<span class="text-sm font-normal text-muted">/mo</span></span>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-border">
+            <div class="flex flex-wrap gap-6 text-sm">
+              <div>
+                <span class="text-muted">Users:</span>
+                <span class="text-foreground ml-1">25 / 50</span>
+              </div>
+              <div>
+                <span class="text-muted">Projects:</span>
+                <span class="text-foreground ml-1">12 / 20</span>
+              </div>
+              <div>
+                <span class="text-muted">Storage:</span>
+                <span class="text-foreground ml-1">18 GB / 50 GB</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Pricing Tiers -->
+        <section>
+          <h2 class="text-lg font-semibold text-foreground mb-4">Available Plans</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Starter -->
+            <div class="card">
+              <h3 class="text-lg font-semibold text-foreground">Starter</h3>
+              <p class="text-muted text-sm mt-1">For small teams getting started</p>
+              <div class="mt-4">
+                <span class="text-3xl font-bold text-foreground">$19</span>
+                <span class="text-muted">/mo</span>
+              </div>
+              <ul class="mt-4 space-y-2">
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Up to 10 users
+                </li>
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  5 projects
+                </li>
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  10 GB storage
+                </li>
+                <li class="flex items-center gap-2 text-sm text-muted">
+                  <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                  Priority support
+                </li>
+              </ul>
+              <button class="btn-secondary w-full mt-6">Downgrade</button>
+            </div>
+
+            <!-- Professional (current) -->
+            <div class="card border-2 border-primary">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <h3 class="text-lg font-semibold text-foreground">Professional</h3>
+                <span class="px-2 py-0.5 bg-primary text-white text-xs font-medium rounded">Current</span>
+              </div>
+              <p class="text-muted text-sm mt-1">For growing teams</p>
+              <div class="mt-4">
+                <span class="text-3xl font-bold text-foreground">$49</span>
+                <span class="text-muted">/mo</span>
+              </div>
+              <ul class="mt-4 space-y-2">
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Up to 50 users
+                </li>
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  20 projects
+                </li>
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  50 GB storage
+                </li>
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Priority support
+                </li>
+              </ul>
+              <button class="btn-primary w-full mt-6" disabled>Current Plan</button>
+            </div>
+
+            <!-- Enterprise -->
+            <div class="card">
+              <h3 class="text-lg font-semibold text-foreground">Enterprise</h3>
+              <p class="text-muted text-sm mt-1">For large organizations</p>
+              <div class="mt-4">
+                <span class="text-3xl font-bold text-foreground">$149</span>
+                <span class="text-muted">/mo</span>
+              </div>
+              <ul class="mt-4 space-y-2">
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Unlimited users
+                </li>
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Unlimited projects
+                </li>
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  500 GB storage
+                </li>
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <svg class="w-4 h-4 text-success flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Dedicated support
+                </li>
+              </ul>
+              <button class="btn-primary w-full mt-6">Upgrade</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Payment Method -->
+        <section class="card">
+          <h2 class="text-lg font-semibold text-foreground mb-4">Payment Method</h2>
+          <div class="flex items-center justify-between flex-wrap gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
+                <svg class="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-foreground">Visa ending in 4242</p>
+                <p class="text-xs text-muted">Expires 12/2026</p>
+              </div>
+            </div>
+            <button class="btn-secondary text-sm">Update</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

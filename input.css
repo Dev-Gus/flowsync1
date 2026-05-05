@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+/*
+ * FlowSync Design System
+ *
+ * COLOR PALETTE RATIONALE:
+ * Chose emerald (#10b981) as the primary accent against a zinc base.
+ * Emerald conveys growth and metrics — fitting for a dashboard product.
+ * It's underused in SaaS (unlike amber/violet), making it distinctive
+ * while remaining professional. The warm green contrasts cleanly
+ * against the cold zinc base without feeling aggressive.
+ */
+
+@theme {
+  /* Colors */
+  --color-primary: #10b981;
+  --color-primary-dark: #059669;
+
+  --color-secondary: #8b5cf6;
+
+  --color-slack: #4A154B;
+  --color-github: #24292e;
+  --color-notion: #000000;
+  --color-linear: #5E6AD2;
+  --color-figma: #F24E1E;
+  --color-discord: #5865F2;
+
+  --color-background: #09090b;
+  --color-surface: #18181b;
+  --color-foreground: #fafafa;
+  --color-muted: #71717a;
+  --color-border: #27272a;
+
+  --color-danger: #ef4444;
+  --color-danger-dark: #dc2626;
+
+  --color-success: #22c55e;
+
+  /* Typography — using Tailwind defaults, only adding custom sizes where needed */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: clamp(1.875rem, 4vw, 2.25rem);
+}
+
+/*
+ * COMPONENT LAYER
+ * Reusable UI patterns. Use these classes instead of long utility strings.
+ * Note: Tailwind v4 doesn't allow @apply of classes defined in the same layer,
+ * so each component uses utilities directly.
+ */
+
+@layer components {
+  /* ==================== BUTTONS ==================== */
+  /* Primary: main CTA, positive actions */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Secondary: less prominent, alternative actions */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-surface text-foreground border border-border hover:bg-muted/20 transition-colors focus:outline-none focus:ring-2 focus:ring-muted focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Danger: destructive actions, errors */
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-danger text-white hover:bg-danger-dark transition-colors focus:outline-none focus:ring-2 focus:ring-danger focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Card selected state: highlighted border + subtle background tint */
+  .card-selected {
+    @apply border-primary bg-primary/5;
+  }
+
+  /* ==================== CARDS ==================== */
+  /* Consistent container for content sections */
+  .card {
+    @apply bg-surface border border-border rounded-lg p-6;
+  }
+
+  /* Card header with bottom border */
+  .card-header {
+    @apply -mx-6 -mt-6 mb-6 px-6 py-4 border-b border-border;
+  }
+
+  /* ==================== INPUTS ==================== */
+  /* Base input styles */
+  .input {
+    @apply w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground placeholder:text-muted transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+
+  /* Input label */
+  .input-label {
+    @apply block text-sm font-medium text-foreground mb-1.5;
+  }
+
+  /* Input error state */
+  .input-error {
+    @apply border-danger focus:ring-danger;
+  }
+
+  /* Error message below input */
+  .input-error-message {
+    @apply mt-1.5 text-sm text-danger;
+  }
+
+  /* ==================== BADGES ==================== */
+  /* Active/online/success status */
+  .badge-active {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full bg-success/20 text-success;
+  }
+
+  /* Inactive/offline status */
+  .badge-inactive {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full bg-muted/20 text-muted;
+  }
+
+  /* Danger/error status */
+  .badge-danger {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full bg-danger/20 text-danger;
+  }
+
+  /* ==================== TABLES ==================== */
+  /* Consistent table styling */
+  .table-container {
+    @apply w-full overflow-x-auto rounded-lg;
+  }
+
+  .table {
+    @apply w-full text-sm text-left;
+  }
+
+  .table-header {
+    @apply bg-surface text-muted uppercase text-xs tracking-wider;
+  }
+
+  .table-header th {
+    @apply px-4 py-3 font-medium;
+  }
+
+  .table-body {
+    @apply bg-surface divide-y divide-border;
+  }
+
+  .table-body tr {
+    @apply hover:bg-muted/10 transition-colors;
+  }
+
+  .table-body td {
+    @apply px-4 py-3 text-foreground;
+  }
+
+  /* ==================== FORM ERROR ==================== */
+  /* Error message below input field */
+  .form-error {
+    @apply mt-1.5 text-xs text-danger block;
+  }
+
+  /* ==================== TOAST ==================== */
+  /* Toast notification base: hidden state with slide + fade */
+  .toast {
+    @apply transition-all duration-300 ease-in-out opacity-0 translate-x-full;
+  }
+
+  /* Toast visible state: fade in + slide from right */
+  .toast-visible {
+    @apply opacity-100 translate-x-0;
+  }
+
+  /* Desktop width and positioning for toast */
+  @media (min-width: 681px) {
+    .toast {
+      width: 20rem;
+      right: 16px;
+    }
+  }
+
+  /* Mobile: constrain to viewport */
+  @media (max-width: 680px) {
+    .toast {
+      left: 16px !important;
+      right: 16px !important;
+      width: auto;
+      max-width: none;
+      overflow: hidden !important;
+    }
+  }
+
+  /* Toast content styling */
+  .toast-content {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg bg-surface border border-border;
+  }
+
+  /* Toast success state */
+  .toast--success .toast-content {
+    @apply bg-success/20 border-success text-success;
+  }
+
+  /* Toast error state */
+  .toast--error .toast-content {
+    @apply bg-danger/20 border-danger text-danger;
+  }
+
+  /* ==================== MODAL ==================== */
+  /* Modal base state: hidden */
+  .modal-hidden {
+    @apply hidden;
+  }
+
+  /* Modal wrapper: contains backdrop + panel, overflow hidden to prevent child overflow on mobile */
+  .modal {
+    @apply fixed inset-0 z-50 transition-all duration-300 ease-in-out overflow-hidden;
+  }
+
+  /* Modal backdrop: fades in/out */
+  .modal-backdrop {
+    @apply absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 ease-in-out;
+  }
+
+  /* Modal backdrop visible when modal-open */
+  .modal.modal-open .modal-backdrop {
+    @apply opacity-100;
+  }
+
+  /* Modal panel container: positioned for center alignment, overflow hidden to constrain children */
+  .modal-panel-container {
+    @apply absolute inset-0 flex items-center justify-center p-4 overflow-hidden;
+  }
+
+  /* Modal panel: slides from right + fades in; max-w-full ensures it never exceeds viewport */
+  .modal-panel {
+    @apply relative bg-surface border border-border rounded-lg w-full max-w-full max-w-md p-6 transition-all duration-300 ease-in-out opacity-0 translate-x-full;
+  }
+
+  /* Modal panel visible when modal-open */
+  .modal.modal-open .modal-panel {
+    @apply opacity-100 translate-x-0;
+  }
+}

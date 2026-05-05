@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowSync — Integrations</title>
+  <link rel="stylesheet" href="output.css" />
+</head>
+<body class="min-h-screen bg-background text-foreground">
+  <div class="md:grid md:grid-cols-[240px_1fr] min-h-screen">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-20 w-60 -translate-x-full bg-surface border-r border-border flex flex-col transition-transform duration-200 md:translate-x-0 md:sticky md:top-0 md:h-screen">
+      <div class="p-6 border-b border-border flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">F</span>
+          </div>
+          <span class="text-lg font-semibold text-foreground">FlowSync</span>
+        </a>
+        <button id="sidebar-close" class="md:hidden w-8 h-8 flex items-center justify-center rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors" aria-label="Close sidebar">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="flex-1 p-4 overflow-y-auto">
+        <ul class="space-y-1">
+          <li>
+            <a href="index.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="users.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+              <span>Users</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span>Settings</span>
+            </a>
+          </li>
+          <li>
+            <a href="billing.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+              </svg>
+              <span>Billing</span>
+            </a>
+          </li>
+          <li>
+            <a href="integrations.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-primary bg-primary/10 font-medium">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+              </svg>
+              <span>Integrations</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="p-4 border-t border-border">
+        <a href="settings.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+          <div class="w-8 h-8 bg-muted rounded-full flex items-center justify-center">
+            <span class="text-xs font-medium text-foreground">JD</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-foreground truncate">John Doe</p>
+            <p class="text-xs text-muted truncate">john@example.com</p>
+          </div>
+        </a>
+      </div>
+    </aside>
+
+    <div id="sidebar-backdrop" class="fixed inset-0 z-10 bg-black/50 hidden md:hidden" aria-hidden="true"></div>
+
+    <div class="flex flex-col min-h-screen overflow-x-hidden">
+      <header class="sticky top-0 z-10 h-16 bg-background border-b border-border flex items-center justify-between px-4 md:px-6">
+        <div class="flex items-center gap-3">
+          <button id="sidebar-toggle" class="md:hidden w-10 h-10 -ml-2 flex items-center justify-center rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors" aria-label="Open menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+          <h1 class="text-xl font-semibold text-foreground">Integrations</h1>
+        </div>
+
+        <div class="relative">
+          <div class="flex items-center gap-2 md:gap-4">
+            <button class="w-10 h-10 md:w-8 md:h-8 rounded-full bg-muted flex items-center justify-center hover:bg-primary/20 transition-colors" aria-label="Notifications" id="notification-btn">
+              <svg class="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+              </svg>
+            </button>
+            <button class="w-9 h-9 rounded-full bg-primary flex items-center justify-center" aria-label="Profile menu" id="profile-btn">
+              <span class="text-sm font-medium text-white">JD</span>
+            </button>
+          </div>
+          <!-- Notification dropdown -->
+          <div id="notification-dropdown" class="absolute right-0 mt-2 w-80 bg-surface border border-border rounded-lg shadow-lg hidden z-50">
+            <div class="p-4 border-b border-border">
+              <h3 class="text-sm font-semibold text-foreground">Notifications</h3>
+            </div>
+            <div class="max-h-64 overflow-y-auto">
+              <div class="p-4 border-b border-border hover:bg-muted/50 cursor-pointer">
+                <p class="text-sm text-foreground">New user registered</p>
+                <p class="text-xs text-muted">2 minutes ago</p>
+              </div>
+              <div class="p-4 border-b border-border hover:bg-muted/50 cursor-pointer">
+                <p class="text-sm text-foreground">Project completed</p>
+                <p class="text-xs text-muted">15 minutes ago</p>
+              </div>
+              <div class="p-4 hover:bg-muted/50 cursor-pointer">
+                <p class="text-sm text-foreground">Integration added</p>
+                <p class="text-xs text-muted">1 hour ago</p>
+              </div>
+            </div>
+          </div>
+          <!-- Profile dropdown -->
+          <div id="profile-dropdown" class="absolute right-0 mt-2 w-48 bg-surface border border-border rounded-lg shadow-lg hidden z-50">
+            <div class="p-3 border-b border-border">
+              <p class="text-sm font-medium text-foreground">John Doe</p>
+              <p class="text-xs text-muted">john@example.com</p>
+            </div>
+            <div class="p-2">
+              <a href="settings.html" class="block px-3 py-2 text-sm text-muted hover:text-foreground hover:bg-muted/50 rounded">Settings</a>
+              <a href="#" class="block px-3 py-2 text-sm text-muted hover:text-foreground hover:bg-muted/50 rounded">Sign out</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1 p-4 md:p-6 space-y-6">
+        <p class="text-muted">Connect your favorite tools to enhance your workflow.</p>
+
+        <!-- Integrations Grid -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Slack -->
+          <div class="card">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-[var(--color-slack)] flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.523h2.52v2.523zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.523 2.527 2.527 0 0 1 2.521 2.523v6.312A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.523v-6.312zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.687 8.834a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.166 0a2.528 2.528 0 0 1 2.521 2.522v6.312zM15.166 18.956a2.528 2.528 0 0 1 2.521 2.522A2.528 2.528 0 0 1 15.166 24a2.528 2.528 0 0 1-2.521-2.522v-2.522h2.521zM15.166 17.687a2.528 2.528 0 0 1-2.521-2.521 2.528 2.528 0 0 1 2.521-2.521h6.312A2.528 2.528 0 0 1 24 15.166a2.528 2.528 0 0 1-2.522 2.521h-6.312z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-foreground">Slack</h3>
+                  <span class="badge-active text-xs">Connected</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-muted mt-3">Get real-time notifications and updates in your Slack workspace.</p>
+            <button class="btn-secondary w-full mt-4" disabled>Connected</button>
+          </div>
+
+          <!-- GitHub -->
+          <div class="card">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-[var(--color-github)] flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-foreground">GitHub</h3>
+                  <span class="badge-active text-xs">Connected</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-muted mt-3">Sync repositories and manage issues directly from FlowSync.</p>
+            <button class="btn-secondary w-full mt-4" disabled>Connected</button>
+          </div>
+
+          <!-- Notion -->
+          <div class="card">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-[var(--color-notion)] flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.287-.026.093-.259.093-.259s-.186-.293-.592-.27L5.285 4.667c-.407.023-.59.274-.59.274s-.1.139.026.376l.738-.109zM4.651 5.08v7.961c0 .417.216.586.704.56l11.279-.676v-8.23l-12.083.684v-.299zm11.279-.684v8.23l.695-.04c.386-.023.538-.216.538-.598V5.634c0-.387-.153-.596-.538-.573l-.695.335zm-9.574 2.334l4.497-.257v1.097l-4.497.257v-1.097zm0 2.18l4.497-.256v1.096l-4.497.257v-1.097zm0 2.182l4.497-.256v1.096l-4.497.257v-1.097zm0 2.181l4.497-.257v1.097l-4.497.257v-1.097zm6.074-6.013v1.097l3.426-.196V4.88l-3.426.2zm0 2.181v1.097l3.426-.197V6.26l-3.426.197zm0 2.182v1.096l3.426-.196V8.443l-3.426.196zm0 2.181v1.097l3.426-.197v-1.096l-3.426.196zm-5.068 2.933l12.083-.684v-1.096l-12.083.684v1.096zm0 1.965l12.083-.684v-1.096l-12.083.684v1.096zm0 1.966l12.083-.684v-1.097l-12.083.684v1.097z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-foreground">Notion</h3>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-muted mt-3">Connect your Notion workspace to sync docs and databases.</p>
+            <button class="btn-primary w-full mt-4">Connect</button>
+          </div>
+
+          <!-- Linear -->
+          <div class="card">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-[var(--color-linear)] flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3.01 4.785c-.143 0-.26.112-.26.26v11.91c0 .148.117.26.26.26h2.01c.148 0 .26-.112.26-.26V8.08l7.45 8.66c.2.235.5.358.81.358h2.01c.148 0 .26-.118.26-.26V5.045c0-.148-.112-.26-.26-.26h-2.01c-.148 0-.26.112-.26.26v8.905l-7.45-8.655c-.2-.235-.5-.365-.81-.365H3.01zm17.97.26c0-.148-.118-.26-.26-.26h-2.01c-.15 0-.26.112-.26.26v11.91c0 .148.11.26.26.26h2.01c.143 0 .26-.112.26-.26V5.045z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-foreground">Linear</h3>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-muted mt-3">Sync issues and projects with Linear for seamless tracking.</p>
+            <button class="btn-primary w-full mt-4">Connect</button>
+          </div>
+
+          <!-- Figma -->
+          <div class="card">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-[var(--color-figma)] flex items-center justify-center">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/figma.svg" class="w-6 h-6 invert" alt="Figma" />
+                </div>
+                <div>
+                  <h3 class="font-medium text-foreground">Figma</h3>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-muted mt-3">Import designs and prototypes from Figma projects.</p>
+            <button class="btn-primary w-full mt-4">Connect</button>
+          </div>
+
+          <!-- Discord -->
+          <div class="card">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-[var(--color-discord)] flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-medium text-foreground">Discord</h3>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-muted mt-3">Receive alerts and updates in your Discord server.</p>
+            <button class="btn-primary w-full mt-4">Connect</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

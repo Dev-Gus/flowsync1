@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowSync — Settings</title>
+  <link rel="stylesheet" href="output.css" />
+</head>
+<body class="min-h-screen bg-background text-foreground">
+  <div class="md:grid md:grid-cols-[240px_1fr] min-h-screen">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-20 w-60 -translate-x-full bg-surface border-r border-border flex flex-col transition-transform duration-200 md:translate-x-0 md:sticky md:top-0 md:h-screen">
+      <div class="p-6 border-b border-border flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">F</span>
+          </div>
+          <span class="text-lg font-semibold text-foreground">FlowSync</span>
+        </a>
+        <button id="sidebar-close" class="md:hidden w-8 h-8 flex items-center justify-center rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors" aria-label="Close sidebar">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="flex-1 p-4 overflow-y-auto">
+        <ul class="space-y-1">
+          <li>
+            <a href="index.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="users.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+              <span>Users</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-primary bg-primary/10 font-medium">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span>Settings</span>
+            </a>
+          </li>
+          <li>
+            <a href="billing.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+              </svg>
+              <span>Billing</span>
+            </a>
+          </li>
+          <li>
+            <a href="integrations.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+              </svg>
+              <span>Integrations</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="p-4 border-t border-border">
+        <a href="settings.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
+          <div class="w-8 h-8 bg-muted rounded-full flex items-center justify-center">
+            <span class="text-xs font-medium text-foreground">JD</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-foreground truncate">John Doe</p>
+            <p class="text-xs text-muted truncate">john@example.com</p>
+          </div>
+        </a>
+      </div>
+    </aside>
+
+    <div id="sidebar-backdrop" class="fixed inset-0 z-10 bg-black/50 hidden md:hidden" aria-hidden="true"></div>
+
+    <div class="flex flex-col min-h-screen overflow-x-hidden">
+      <header class="sticky top-0 z-10 h-16 bg-background border-b border-border flex items-center justify-between px-4 md:px-6">
+        <div class="flex items-center gap-3">
+          <button id="sidebar-toggle" class="md:hidden w-10 h-10 -ml-2 flex items-center justify-center rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors" aria-label="Open menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+          <h1 class="text-xl font-semibold text-foreground">Settings</h1>
+        </div>
+
+        <div class="relative">
+          <div class="flex items-center gap-2 md:gap-4">
+            <button class="w-10 h-10 md:w-8 md:h-8 rounded-full bg-muted flex items-center justify-center hover:bg-primary/20 transition-colors" aria-label="Notifications" id="notification-btn">
+              <svg class="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+              </svg>
+            </button>
+            <button class="w-9 h-9 rounded-full bg-primary flex items-center justify-center" aria-label="Profile menu" id="profile-btn">
+              <span class="text-sm font-medium text-white">JD</span>
+            </button>
+          </div>
+          <!-- Notification dropdown -->
+          <div id="notification-dropdown" class="absolute right-0 mt-2 w-80 bg-surface border border-border rounded-lg shadow-lg hidden z-50">
+            <div class="p-4 border-b border-border">
+              <h3 class="text-sm font-semibold text-foreground">Notifications</h3>
+            </div>
+            <div class="max-h-64 overflow-y-auto">
+              <div class="p-4 border-b border-border hover:bg-muted/50 cursor-pointer">
+                <p class="text-sm text-foreground">New user registered</p>
+                <p class="text-xs text-muted">2 minutes ago</p>
+              </div>
+              <div class="p-4 border-b border-border hover:bg-muted/50 cursor-pointer">
+                <p class="text-sm text-foreground">Project completed</p>
+                <p class="text-xs text-muted">15 minutes ago</p>
+              </div>
+              <div class="p-4 hover:bg-muted/50 cursor-pointer">
+                <p class="text-sm text-foreground">Integration added</p>
+                <p class="text-xs text-muted">1 hour ago</p>
+              </div>
+            </div>
+          </div>
+          <!-- Profile dropdown -->
+          <div id="profile-dropdown" class="absolute right-0 mt-2 w-48 bg-surface border border-border rounded-lg shadow-lg hidden z-50">
+            <div class="p-3 border-b border-border">
+              <p class="text-sm font-medium text-foreground">John Doe</p>
+              <p class="text-xs text-muted">john@example.com</p>
+            </div>
+            <div class="p-2">
+              <a href="settings.html" class="block px-3 py-2 text-sm text-muted hover:text-foreground hover:bg-muted/50 rounded">Settings</a>
+              <a href="#" class="block px-3 py-2 text-sm text-muted hover:text-foreground hover:bg-muted/50 rounded">Sign out</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1 p-4 md:p-6 space-y-6">
+        <!-- Tabs -->
+        <div class="border-b border-border">
+          <nav class="flex gap-4 -mb-px" role="tablist">
+            <button role="tab" aria-selected="true" class="tab-btn px-1 py-3 text-sm font-medium text-primary border-b-2 border-primary" data-tab="profile">Profile</button>
+            <button role="tab" aria-selected="false" class="tab-btn px-1 py-3 text-sm font-medium text-muted border-b-2 border-transparent hover:text-foreground hover:border-border" data-tab="password">Password</button>
+            <button role="tab" aria-selected="false" class="tab-btn px-1 py-3 text-sm font-medium text-muted border-b-2 border-transparent hover:text-foreground hover:border-border" data-tab="notifications">Notifications</button>
+          </nav>
+        </div>
+
+        <!-- Profile Tab -->
+        <section id="tab-profile" class="tab-content">
+          <div class="card max-w-2xl">
+            <h2 class="text-lg font-semibold text-foreground mb-6">Profile Information</h2>
+            <form class="space-y-6">
+              <!-- Avatar -->
+              <div class="flex items-center gap-4">
+                <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
+                  <span class="text-xl font-medium text-white">JD</span>
+                </div>
+                <div>
+                  <button type="button" class="btn-secondary text-sm">Change avatar</button>
+                  <p class="text-xs text-muted mt-1">JPG, PNG. Max 2MB.</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="input-label" for="first-name">First name</label>
+                  <input type="text" id="first-name" class="input" value="John" />
+                </div>
+                <div>
+                  <label class="input-label" for="last-name">Last name</label>
+                  <input type="text" id="last-name" class="input" value="Doe" />
+                </div>
+              </div>
+
+              <div>
+                <label class="input-label" for="email">Email</label>
+                <input type="email" id="email" class="input" value="john@example.com" />
+              </div>
+
+              <div>
+                <label class="input-label" for="timezone">Timezone</label>
+                <select id="timezone" class="input">
+                  <option>Pacific Time (US & Canada)</option>
+                  <option>Mountain Time (US & Canada)</option>
+                  <option>Central Time (US & Canada)</option>
+                  <option>Eastern Time (US & Canada)</option>
+                  <option>UTC</option>
+                </select>
+              </div>
+
+              <div class="pt-4 border-t border-border">
+                <button type="submit" class="btn-primary">Save Changes</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Password Tab -->
+        <section id="tab-password" class="tab-content hidden">
+          <div class="card max-w-2xl">
+            <h2 class="text-lg font-semibold text-foreground mb-6">Change Password</h2>
+            <form class="space-y-4">
+              <div>
+                <label class="input-label" for="current-password">Current password</label>
+                <input type="password" id="current-password" class="input" placeholder="Enter current password" />
+              </div>
+              <div>
+                <label class="input-label" for="new-password">New password</label>
+                <input type="password" id="new-password" class="input" placeholder="Enter new password" />
+              </div>
+              <div>
+                <label class="input-label" for="confirm-password">Confirm new password</label>
+                <input type="password" id="confirm-password" class="input" placeholder="Confirm new password" />
+              </div>
+              <div class="pt-4 border-t border-border">
+                <button type="submit" class="btn-primary">Update Password</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Notifications Tab -->
+        <section id="tab-notifications" class="tab-content hidden">
+          <div class="card max-w-2xl">
+            <h2 class="text-lg font-semibold text-foreground mb-6">Notification Preferences</h2>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between py-3">
+                <div>
+                  <p class="text-sm font-medium text-foreground">Email notifications</p>
+                  <p class="text-sm text-muted">Receive email updates about your account</p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" checked class="sr-only peer" />
+                  <div class="w-11 h-6 bg-muted rounded-full peer peer-checked:bg-primary peer-focus:ring-2 peer-focus:ring-primary/50 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+                </label>
+              </div>
+              <div class="flex items-center justify-between py-3 border-t border-border">
+                <div>
+                  <p class="text-sm font-medium text-foreground">Push notifications</p>
+                  <p class="text-sm text-muted">Receive push notifications in browser</p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" class="sr-only peer" />
+                  <div class="w-11 h-6 bg-muted rounded-full peer peer-checked:bg-primary peer-focus:ring-2 peer-focus:ring-primary/50 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+                </label>
+              </div>
+              <div class="flex items-center justify-between py-3 border-t border-border">
+                <div>
+                  <p class="text-sm font-medium text-foreground">Weekly digest</p>
+                  <p class="text-sm text-muted">Get a weekly summary of activity</p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" checked class="sr-only peer" />
+                  <div class="w-11 h-6 bg-muted rounded-full peer peer-checked:bg-primary peer-focus:ring-2 peer-focus:ring-primary/50 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+                </label>
+              </div>
+              <div class="flex items-center justify-between py-3 border-t border-border">
+                <div>
+                  <p class="text-sm font-medium text-foreground">Marketing emails</p>
+                  <p class="text-sm text-muted">Receive news and product updates</p>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" class="sr-only peer" />
+                  <div class="w-11 h-6 bg-muted rounded-full peer peer-checked:bg-primary peer-focus:ring-2 peer-focus:ring-primary/50 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+  </div>
+</body>
+<script src="main.js"></script>
+</html>
