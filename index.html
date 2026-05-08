@@ -6,13 +6,13 @@
   <title>FlowSync — Dashboard</title>
   <link rel="stylesheet" href="output.css" />
 </head>
-<body class="min-h-screen bg-background text-foreground">
+<body class="min-h-screen bg-background text-foreground overflow-x-hidden">
   <!--
     Mobile-first layout:
     - Mobile: single column, sidebar hidden (toggled via hamburger)
     - md (768px+): grid with visible sidebar
   -->
-  <div class="md:grid md:grid-cols-[240px_1fr] min-h-screen">
+  <div class="w-full md:grid md:grid-cols-[240px_1fr] min-h-screen">
 
     <!-- Sidebar: hidden on mobile, fixed on desktop -->
     <!-- w-60 (240px) matches grid-cols-[240px_1fr] for consistent layout -->
