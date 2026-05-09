@@ -227,12 +227,12 @@
               <!-- Header -->
               <thead class="table-header">
                 <tr>
-                  <th>User</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                  <th>Joined</th>
-                  <th></th>
+                  <th scope="col">User</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Joined</th>
+                  <th aria-label="Actions" scope="col"></th>
                 </tr>
               </thead>
 
@@ -255,7 +255,7 @@
                   <td><span class="badge-active">Active</span></td>
                   <td>Jan 15, 2024</td>
                   <td>
-                    <button class="text-muted hover:text-foreground transition-colors p-1">
+                    <button class="text-muted hover:text-foreground transition-colors p-1" aria-label="User options">
                       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="5" r="1.5" />
                         <circle cx="12" cy="12" r="1.5" />
@@ -281,7 +281,7 @@
                   <td><span class="badge-active">Active</span></td>
                   <td>Jan 12, 2024</td>
                   <td>
-                    <button class="text-muted hover:text-foreground transition-colors p-1">
+                    <button class="text-muted hover:text-foreground transition-colors p-1" aria-label="User options">
                       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="5" r="1.5" />
                         <circle cx="12" cy="12" r="1.5" />
@@ -307,7 +307,7 @@
                   <td><span class="badge-inactive">Inactive</span></td>
                   <td>Dec 28, 2023</td>
                   <td>
-                    <button class="text-muted hover:text-foreground transition-colors p-1">
+                    <button class="text-muted hover:text-foreground transition-colors p-1" aria-label="User options">
                       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="5" r="1.5" />
                         <circle cx="12" cy="12" r="1.5" />
@@ -333,7 +333,7 @@
                   <td><span class="badge-active">Active</span></td>
                   <td>Dec 15, 2023</td>
                   <td>
-                    <button class="text-muted hover:text-foreground transition-colors p-1">
+                    <button class="text-muted hover:text-foreground transition-colors p-1" aria-label="User options">
                       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="5" r="1.5" />
                         <circle cx="12" cy="12" r="1.5" />
@@ -359,7 +359,7 @@
                   <td><span class="badge-danger">Suspended</span></td>
                   <td>Nov 30, 2023</td>
                   <td>
-                    <button class="text-muted hover:text-foreground transition-colors p-1">
+                    <button class="text-muted hover:text-foreground transition-colors p-1" aria-label="User options">
                       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="5" r="1.5" />
                         <circle cx="12" cy="12" r="1.5" />
@@ -389,11 +389,11 @@
   </div>
 
   <!-- Add User Modal (hidden by default) -->
-  <div id="add-user-modal" class="modal modal-hidden">
+  <div id="add-user-modal" class="modal modal-hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-backdrop"></div>
     <div class="modal-panel-container">
       <div class="modal-panel">
-        <h2 class="text-lg font-semibold text-foreground mb-4">Add New User</h2>
+        <h2 id="modal-title" class="text-lg font-semibold text-foreground mb-4">Add New User</h2>
         <form id="add-user-form" class="space-y-4" novalidate>
           <div>
             <label class="input-label" for="user-name">Name</label>

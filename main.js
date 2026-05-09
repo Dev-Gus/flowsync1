@@ -157,11 +157,6 @@
   var profileBtn = document.getElementById('profile-btn');
   var profileDropdown = document.getElementById('profile-dropdown');
 
-  console.log('notificationBtn:', notificationBtn);
-  console.log('notificationDropdown:', notificationDropdown);
-  console.log('profileBtn:', profileBtn);
-  console.log('profileDropdown:', profileDropdown);
-
   function toggleDropdown(btn, dropdown) {
     if (!btn || !dropdown) return;
     var isHidden = dropdown.classList.contains('hidden');
