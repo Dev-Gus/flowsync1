@@ -1,0 +1,146 @@
+<!-- ============================================================
+     FlowSync — Dark Mode Integration Snippets
+     ============================================================
+     Three things to add/change across the project.
+     All pages share the same sidebar, so steps 1 & 2 apply
+     to every HTML file (index, users, billing, settings,
+     integrations). Step 3 is index.html only.
+     ============================================================ -->
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SNIPPET 1 — Anti-FOUC <head> inline script
+     ──────────────────────────────────────────────────────────
+     Place this as the LAST item inside <head>, after your
+     <link> to output.css. It runs synchronously before the
+     browser lays out or paints anything, so the correct class
+     is already on <html> when CSS is first applied.
+
+     NO external dependencies. Intentionally not in dark-mode.js
+     because a deferred/async script would be too late.
+     ══════════════════════════════════════════════════════════ -->
+
+<head>
+  <!-- ... your existing meta, title, output.css link ... -->
+
+  <script>
+    (function () {
+      var theme = localStorage.getItem('flowsync-theme') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    }());
+  </script>
+</head>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SNIPPET 2 — Toggle button in the sidebar
+     ──────────────────────────────────────────────────────────
+     Place this inside the sidebar's bottom user-profile section,
+     alongside the logout/avatar block.
+
+     The button ships with the MOON icon (light-mode default).
+     dark-mode.js will swap it to SUN if dark mode is active.
+
+     Tailwind classes used:
+       - flex items-center gap-3        → align icon + label row
+       - text-[--color-muted]           → matches other sidebar
+         hover:text-[--color-foreground]  secondary actions
+       - transition-colors              → smooth colour shift
+       - dark:text-[--color-foreground] → already bright in dark
+     ══════════════════════════════════════════════════════════ -->
+
+<!-- Sidebar bottom section — add inside your profile/footer block -->
+<div class="flex items-center justify-between px-3 py-2">
+
+  <!-- Existing: user avatar + name (already in your sidebar) -->
+  <!-- <div class="flex items-center gap-3"> ... </div> -->
+
+  <!-- NEW: theme toggle -->
+  <button
+    id="theme-toggle"
+    type="button"
+    aria-label="Switch to dark mode"
+    class="p-2 rounded-lg
+           text-[--color-muted] hover:text-[--color-foreground]
+           hover:bg-[--color-surface]
+           dark:hover:bg-white/5
+           transition-colors duration-200
+           focus-visible:outline-none focus-visible:ring-2
+           focus-visible:ring-[--color-primary]"
+  >
+    <!-- Moon icon - default (light mode) -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+         aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
+    </svg>
+  </button>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SNIPPET 3 — Load dark-mode.js
+     ──────────────────────────────────────────────────────────
+     Add to ALL pages, after main.js. Using defer keeps it
+     non-blocking; it still runs after DOMContentLoaded.
+     The FOUC is already prevented by the inline <head> script,
+     so deferred loading is fine here.
+     ══════════════════════════════════════════════════════════ -->
+
+<!-- At the bottom of <body>, after main.js -->
+<script src="main.js" defer></script>
+<script src="dark-mode.js" defer></script>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SNIPPET 4 — Tailwind CSS v4 dark mode config (input.css)
+     ──────────────────────────────────────────────────────────
+     Tailwind v4 defaults to `media` strategy. You need `class`
+     strategy so toggling the .dark class on <html> works.
+
+     Add this at the TOP of input.css, before @theme:
+     ══════════════════════════════════════════════════════════ -->
+
+/*
+  input.css — add at the very top
+*/
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+/*
+  This tells Tailwind v4 that `dark:` utilities apply when any
+  ancestor (including <html>) has the `dark` class — matching
+  the class-based toggle strategy.
+
+  Then add dark: overrides to your components as needed, e.g.:
+
+  .card {
+    @apply bg-[--color-surface] border border-[--color-border] ...;
+  }
+
+  Or inline in HTML:
+  <div class="bg-white dark:bg-[--color-surface]">
+
+  Your design tokens (--color-background, --color-surface, etc.)
+  can also be duplicated inside a `.dark` block to auto-shift:
+
+  :root {
+    --color-background: #ffffff;
+    --color-surface:    #f4f4f5;
+    --color-foreground: #18181b;
+  }
+  .dark {
+    --color-background: #09090b;
+    --color-surface:    #18181b;
+    --color-foreground: #fafafa;
+  }
+
+  With this pattern, any element using var(--color-background)
+  automatically gets the right value in both themes — no extra
+  dark: classes needed.
+*/

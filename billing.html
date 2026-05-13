@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlowSync — Billing</title>
   <link rel="stylesheet" href="output.css" />
+  <script>
+    (function () {
+      var theme = localStorage.getItem('flowsync-theme') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    }());
+  </script>
 </head>
-<body class="min-h-screen bg-background text-foreground overflow-x-hidden">
+<body class="min-h-screen bg-background text-foreground dark:bg-[--color-background] dark:text-[--color-foreground] overflow-x-hidden">
   <div class="w-full md:grid md:grid-cols-[240px_1fr] min-h-screen">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="fixed inset-y-0 left-0 z-20 w-60 -translate-x-full bg-surface border-r border-border flex flex-col transition-transform duration-200 md:translate-x-0 md:sticky md:top-0 md:h-screen">
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-20 w-60 -translate-x-full bg-surface dark:bg-[--color-surface] border-r border-border dark:border-[--color-border] flex flex-col transition-transform duration-200 md:translate-x-0 md:sticky md:top-0 md:h-screen">
       <div class="p-6 border-b border-border flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-3">
           <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
@@ -71,23 +79,46 @@
         </ul>
       </nav>
 
-      <div class="p-4 border-t border-border">
-        <a href="settings.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors">
-          <div class="w-8 h-8 bg-muted rounded-full flex items-center justify-center">
-            <span class="text-xs font-medium text-foreground">JD</span>
-          </div>
-          <div class="flex-1 min-w-0">
-            <p class="text-sm font-medium text-foreground truncate">John Doe</p>
-            <p class="text-xs text-muted truncate">john@example.com</p>
-          </div>
-        </a>
+      <!-- User section at bottom -->
+      <div class="p-4 border-t border-border space-y-3">
+        <div class="flex items-center justify-between">
+          <a href="settings.html" class="flex items-center gap-3 px-3 py-2 rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors flex-1">
+            <div class="w-8 h-8 bg-muted rounded-full flex items-center justify-center">
+              <span class="text-xs font-medium text-foreground">JD</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-foreground truncate">John Doe</p>
+              <p class="text-xs text-muted truncate">john@example.com</p>
+            </div>
+          </a>
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch to dark mode"
+            class="p-2 rounded-lg
+                   text-[--color-muted] hover:text-[--color-foreground]
+                   hover:bg-[--color-surface]
+                   dark:hover:bg-white/5
+                   transition-colors duration-200
+                   focus-visible:outline-none focus-visible:ring-2
+                   focus-visible:ring-[--color-primary]"
+          >
+            <!-- Moon icon — default (light mode). JS swaps to sun in dark mode. -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                 aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </aside>
 
     <div id="sidebar-backdrop" class="fixed inset-0 z-10 bg-black/50 hidden md:hidden" aria-hidden="true"></div>
 
     <div class="flex flex-col min-h-screen overflow-x-hidden">
-      <header class="sticky top-0 z-10 h-16 bg-background border-b border-border flex items-center justify-between px-4 md:px-6">
+      <header class="sticky top-0 z-10 h-16 bg-background dark:bg-[--color-background] border-b border-border dark:border-[--color-border] flex items-center justify-between px-4 md:px-6">
         <div class="flex items-center gap-3">
           <button id="sidebar-toggle" class="md:hidden w-10 h-10 -ml-2 flex items-center justify-center rounded-lg text-muted hover:text-foreground hover:bg-muted/10 transition-colors" aria-label="Open menu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -315,6 +346,7 @@
     </div>
 
   </div>
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
+  <script src="dark-mode.js" defer></script>
 </body>
 </html>

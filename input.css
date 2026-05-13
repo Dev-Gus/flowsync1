@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 /*
  * FlowSync Design System
  *
@@ -10,6 +12,25 @@
  * while remaining professional. The warm green contrasts cleanly
  * against the cold zinc base without feeling aggressive.
  */
+
+/* Light theme defaults + Dark theme overrides */
+@layer base {
+  :root {
+    --color-background: #ffffff;
+    --color-surface: #f4f4f5;
+    --color-foreground: #18181b;
+    --color-muted: #71717a;
+    --color-border: #e4e4e7;
+  }
+
+  .dark {
+    --color-background: #09090b;
+    --color-surface: #18181b;
+    --color-foreground: #fafafa;
+    --color-muted: #71717a;
+    --color-border: #27272a;
+  }
+}
 
 @theme {
   /* Colors */
@@ -25,11 +46,11 @@
   --color-figma: #F24E1E;
   --color-discord: #5865F2;
 
-  --color-background: #09090b;
-  --color-surface: #18181b;
-  --color-foreground: #fafafa;
+  --color-background: #ffffff;
+  --color-surface: #f4f4f5;
+  --color-foreground: #18181b;
   --color-muted: #71717a;
-  --color-border: #27272a;
+  --color-border: #e4e4e7;
 
   --color-danger: #ef4444;
   --color-danger-dark: #dc2626;
